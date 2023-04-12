@@ -17,15 +17,13 @@ const authOptions: AuthOptions = {
   ],
   callbacks: {
     /*async redirect({ url, baseUrl }) {
-      console.log(`NEXTAUTH_URL: ${process.env.NEXTAUTH_URL}`);
-      console.log(`redirect url: ${url} baseUrl: ${baseUrl}`);
-      return process.env.NEXTAUTH_URL!;
-    },*/
+          console.log(`NEXTAUTH_URL: ${process.env.NEXTAUTH_URL}`);
+          console.log(`redirect url: ${url} baseUrl: ${baseUrl}`);
+          return process.env.NEXTAUTH_URL!;
+        },*/
     async signIn({ user }) {
       return user.email === process.env.WHITELISTED_EMAIL;
     },
   },
 };
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
+export default NextAuth(authOptions);
