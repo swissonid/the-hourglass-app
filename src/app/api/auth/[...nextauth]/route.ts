@@ -17,6 +17,7 @@ const authOptions: AuthOptions = {
   ],
   callbacks: {
     async redirect({ url, baseUrl }) {
+      console.log(`NEXTAUTH_URL: ${process.env.NEXTAUTH_URL}`);
       console.log(`redirect url: ${url} baseUrl: ${baseUrl}`);
       return baseUrl;
     },
