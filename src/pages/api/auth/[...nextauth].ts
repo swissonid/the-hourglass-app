@@ -3,6 +3,10 @@ import GithubProvider from "next-auth/providers/github";
 
 /**
  * For more info see https://next-auth.js.org/configuration/initialization#route-handlers-app
+ *
+ * move back to https://github.com/swissonid/the-hourglass-app/commit/4490d684451111714dc7f46acfa892f49883e805
+ * when they have fixed https://github.com/nextauthjs/next-auth/issues/7229
+ *
  */
 const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -16,11 +20,6 @@ const authOptions: AuthOptions = {
     // ...add more providers here
   ],
   callbacks: {
-    /*async redirect({ url, baseUrl }) {
-          console.log(`NEXTAUTH_URL: ${process.env.NEXTAUTH_URL}`);
-          console.log(`redirect url: ${url} baseUrl: ${baseUrl}`);
-          return process.env.NEXTAUTH_URL!;
-        },*/
     async signIn({ user }) {
       return user.email === process.env.WHITELISTED_EMAIL;
     },
