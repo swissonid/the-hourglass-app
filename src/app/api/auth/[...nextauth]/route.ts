@@ -19,7 +19,7 @@ const authOptions: AuthOptions = {
     async redirect({ url, baseUrl }) {
       console.log(`NEXTAUTH_URL: ${process.env.NEXTAUTH_URL}`);
       console.log(`redirect url: ${url} baseUrl: ${baseUrl}`);
-      return baseUrl;
+      return process.env.NEXTAUTH_URL!;
     },
     async signIn({ user }) {
       return user.email === process.env.WHITELISTED_EMAIL;
