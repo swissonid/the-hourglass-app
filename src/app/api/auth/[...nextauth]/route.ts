@@ -4,7 +4,7 @@ import GithubProvider from "next-auth/providers/github";
 /**
  * For more info see https://next-auth.js.org/configuration/initialization#route-handlers-app
  */
-export const authOptions: AuthOptions = {
+const authOptions: AuthOptions = {
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
