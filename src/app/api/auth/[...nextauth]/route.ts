@@ -5,6 +5,8 @@ import GithubProvider from "next-auth/providers/github";
  * For more info see https://next-auth.js.org/configuration/initialization#route-handlers-app
  */
 const authOptions: AuthOptions = {
+  secret: process.env.NEXTAUTH_SECRET,
+
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
@@ -14,6 +16,10 @@ const authOptions: AuthOptions = {
     // ...add more providers here
   ],
   callbacks: {
+    async redirect({ url, baseUrl }) {
+      console.log(`redirect url: ${url} baseUrl: ${baseUrl}`);
+      return baseUrl;
+    },
     async signIn({ user }) {
       return user.email === process.env.WHITELISTED_EMAIL;
     },
