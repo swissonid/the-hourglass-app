@@ -16,11 +16,11 @@ const authOptions: AuthOptions = {
     // ...add more providers here
   ],
   callbacks: {
-    async redirect({ url, baseUrl }) {
+    /*async redirect({ url, baseUrl }) {
       console.log(`NEXTAUTH_URL: ${process.env.NEXTAUTH_URL}`);
       console.log(`redirect url: ${url} baseUrl: ${baseUrl}`);
       return process.env.NEXTAUTH_URL!;
-    },
+    },*/
     async signIn({ user }) {
       return user.email === process.env.WHITELISTED_EMAIL;
     },
