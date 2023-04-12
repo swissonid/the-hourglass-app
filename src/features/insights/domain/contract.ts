@@ -1,10 +1,8 @@
 import { z } from "zod";
-import { Brand } from "@utils/type-utils";
 
 const percentageSchema = z.number().min(0.01).max(1).default(1);
 const holidaysByFullEmploymentSchema = z.number().min(1).default(25);
 const hoursPerWeekSchema = z.number().min(1).default(42.5);
-type Percentage = Brand<number, "Percentage">;
 
 const unsavedContractSchema = z.object({
   startDate: z.date(),
